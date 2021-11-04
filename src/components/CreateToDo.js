@@ -18,15 +18,16 @@ const CreateToDo = () => {
     return (
         <div style={{padding: "200px"}}>
             <form>
-                <label>Task</label>
-                <input type="text"/>
-                <label>Priority</label>
-                <select>
-                    <option value="Choose Priority">Low</option>
-                    <option value="high">High</option>
-                    <option value="med">Med</option>
-                    <option value="low">Low</option>
-                </select>
+            <TextField name="task" id="task" label="Task" value={form.task}/>
+                <Select 
+                    id="priority"
+                    value={form.priority}
+                    label="Priority">
+                    <MenuItem value="Choose Priority">Choose Priority</MenuItem>
+                    <MenuItem value="high">High</MenuItem>
+                    <MenuItem value="med">Med</MenuItem>
+                    <MenuItem value="low">Low</MenuItem>
+                </Select>
                 <label>Due Date</label>
                 <input type="date"/>
                 <label>Assigned to:</label>
