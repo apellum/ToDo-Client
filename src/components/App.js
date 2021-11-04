@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './NavBar';
 import Home from './Home';
 
@@ -8,9 +8,9 @@ function App() {
     <div className="App">
       <Router>
         <NavBar/>
-        <Switch>
-          <Route exact path='/' component={Home} />
-        </Switch>
+        <Routes>
+          <Route exact path='/' element={<Home/>} />
+        </Routes>
       </Router>
     </div>
   );
