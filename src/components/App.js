@@ -11,7 +11,6 @@ function App() {
         <NavBar/>
         <Routes>
           <Route exact path='/' element={<Home/>} />
-          <Route exact path='/new-todo' element={<CreateToDo/>} />
         </Routes>
       </Router>
     </div>
