@@ -4,9 +4,9 @@ import NavBar from './NavBar';
 import Home from './Home';
 import CreateToDo from './CreateToDo';
 import Signup from './sessions/Signup';
-import 
 
 function App() {
+
   return (
     <div className="App">
       <Router>

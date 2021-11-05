@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid, Paper, Box, TextField, Button } from '@mui/material'
 
 const Signup = () => {
+    const paperStyle = {padding : 20, height: '70vh', width: 350, margin: '20px auto', borderRadius: 25}
+
     const [state, setState] = useState({
         first_name: "",
         last_name: "",
@@ -16,6 +18,7 @@ const Signup = () => {
             [e.target.name]: e.target.value
         })
     }
+    console.log(state)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,7 +31,7 @@ const Signup = () => {
                 <Grid align='center'>
                     <h2>Create a New Account</h2>
                 </Grid>
-                <Grid item container>
+                <Grid item container spacing={2} sx={{display: 'flex',flexDirection: 'column'}}>
                     <Box component="form" onSubmit={handleSubmit}>
                         <Grid item align='center'>
                         <TextField
@@ -49,8 +52,12 @@ const Signup = () => {
                                     value={state.date_of_birth}
                                     onChange={handleChange}
                                     id="date_of_birth"
-                                    label="Date Of Birth"
+                                    label="Birthday"
                                     name="date_of_birth"
+                                    type="date"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
                                 />
                         <TextField
                                     value={state.email}
