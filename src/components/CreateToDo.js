@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { TextField, Select, MenuItem } from '@mui/material';
 
 const CreateToDo = () => {
     const [form, setForm] = useState({
@@ -7,18 +8,18 @@ const CreateToDo = () => {
         priority: "Choose Priority"
     })
 
-    const handleChange = (e) => {
+    // const handleChange = (e) => {
         
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
 
-        dispatch(addToDo(state, currentUser))
-    }
+    //     dispatch(addToDo(state, currentUser))
+    // }
     return (
         <div style={{padding: "200px"}}>
             <form>
-            <TextField name="task" id="task" label="Task" value={form.task}/>
+                <TextField name="task" id="task" label="Task" value={form.task}/>
                 <Select 
                     id="priority"
                     value={form.priority}
