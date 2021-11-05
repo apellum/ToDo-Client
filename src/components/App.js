@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './NavBar';
 import Home from './Home';
 import CreateToDo from './CreateToDo';
+import Signup from './sessions/Signup';
+import 
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/new-todo' element={<CreateToDo/>} />
+          <Route exact path='/signup' element={<Signup/>} />
         </Routes>
       </Router>
     </div>

@@ -2,6 +2,25 @@ import React from 'react'
 import { Grid, Paper, Box, TextField, Button } from '@mui/material'
 
 const Signup = () => {
+    const [state, setState] = useState({
+        first_name: "",
+        last_name: "",
+        date_of_birth: "",
+        email: "",
+        password: ""
+    })
+
+    const handleChange = e => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+    }
     return (
         <div>
             <Grid container direction='column' alignItems='center' justifyContent='center'>
