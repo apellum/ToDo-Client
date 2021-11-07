@@ -1,6 +1,6 @@
 import React from 'react'
 
-const todolist.test = () => {
+const todolistTest = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const todolist.test = () => {
     )
 }
 
-export default todolist.test
+export default todolistTest
