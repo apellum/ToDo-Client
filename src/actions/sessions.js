@@ -1,10 +1,10 @@
 import { baseUrl } from "../GlobalVariables"
 
-export const signup = (details, history) => {
+export const signup = (details, navigate) => {
     return async (dispatch) => {
       dispatch({ type: "REQUESTING" });
   
-      const resp = await fetch(baseURL + '/signup', {
+      const resp = await fetch(baseUrl + '/signup', {
         method: "POST",
         headers: {
           "Accept": "application/json",
@@ -14,6 +14,7 @@ export const signup = (details, history) => {
       })
   
       const data = await resp.json();
+      console.log(data)
       if (data.errors) {
         dispatch({ type: "ERRORS", payload: data.errors })
       } else {
@@ -21,8 +22,8 @@ export const signup = (details, history) => {
         localStorage.setItem('jwt', data.jwt)
         dispatch({ type: "LOGIN", payload: data })
         dispatch({ type: "CLEAR_ERRORS" })
+        navigate("/")
         dispatch({ type: "COMPLETED_REQUESTING" });
-        history.push("/")
       }
     }
   }

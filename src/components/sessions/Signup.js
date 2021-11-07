@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { signup } from '../../actions/sessions'
 import { Grid, Paper, Box, TextField, Button } from '@mui/material'
 
 const Signup = () => {
@@ -8,9 +11,14 @@ const Signup = () => {
         first_name: "",
         last_name: "",
         date_of_birth: "",
+        username: "",
         email: "",
-        password: ""
+        password: "",
+        isAdult: true
     })
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleChange = e => {
         setState({
@@ -18,12 +26,19 @@ const Signup = () => {
             [e.target.name]: e.target.value
         })
     }
-    console.log(state)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(state)
+        dispatch(signup(state, navigate))
     }
+
+    useEffect(() => {
+        return () => {
+            dispatch({type: "CLEAR_ERRORS"})
+        }
+    }, [dispatch])
+
     return (
         <div>
             <Grid container direction='column' alignItems='center' justifyContent='center'>
@@ -58,6 +73,13 @@ const Signup = () => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                />
+                        <TextField
+                                    value={state.username}
+                                    onChange={handleChange}
+                                    id="username"
+                                    label="Username"
+                                    name="username"
                                 />
                         <TextField
                                     value={state.email}

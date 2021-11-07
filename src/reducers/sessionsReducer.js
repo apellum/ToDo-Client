@@ -7,16 +7,10 @@ const initialState = {
 const sessionsReducer = (state=initialState, action) => {
     switch(action.type) {
         case "LOGIN":
-            return {...state,
+            return {
                 currentUser: action.payload.user,
                 loggedIn: true,
-                token: action.payload.jwt
-            }
-        case "SIGNUP":
-            return {...state,
-                currentUser: action.payload.user,
-                loggedIn: true,
-                token: action.payload.jwt
+                // token: action.payload.jwt
             }
         case "LOGOUT":
             return initialState;
