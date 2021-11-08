@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { login } from '../../actions/sessions'
+import { clearErrors } from '../../actions/errors'
+import { Grid, Paper, Avatar, Box, TextField, Button } from '@mui/material'
+import LoginIcon from '@mui/icons-material/Login'
 
 const Login = () => {
     const paperStyle = {padding : 20, height: '70vh', width: 350, margin: '20px auto', borderRadius: 25}
     const avatarStyle = {backgroundColor: '#03a9f4'}
 
+    const loggedIn = useSelector(state => state.sessions.loggedIn)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [state, setState] = useState({
         email: "",
         password: ""
     })
+
+    useEffect(() => {
+        if(loggedIn){
+            navigate("/")
+        }
+        return () => {
+            dispatch(clearErrors())
+        }
+    }, [loggedIn, navigate])
 
     const handleChange = e => {
         setState({
