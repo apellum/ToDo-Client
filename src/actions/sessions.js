@@ -8,17 +8,16 @@ export const signup = (details, navigate) => {
         method: "POST",
         headers: {
           "Accept": "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(details)
       })
-  
+      console.log(resp)
       const data = await resp.json();
       console.log(data)
       if (data.errors) {
         dispatch({ type: "ERRORS", payload: data.errors })
       } else {
-        // console.log('data', data)
         localStorage.setItem('jwt', data.jwt)
         dispatch({ type: "LOGIN", payload: data })
         dispatch({ type: "CLEAR_ERRORS" })
