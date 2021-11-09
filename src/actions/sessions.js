@@ -12,9 +12,7 @@ export const signup = (details, navigate) => {
         },
         body: JSON.stringify(details)
       })
-      debugger
       const data = await resp.json();
-      console.log(data)
       if (data.errors) {
         dispatch({ type: "ERRORS", payload: data.errors })
       } else {

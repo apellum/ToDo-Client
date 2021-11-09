@@ -38,7 +38,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // dispatch(login(state, history))
+        dispatch(login(state, navigate))
     }
     return (
         <div>
