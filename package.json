@@ -40,13 +40,13 @@
       "not dead",
       "not op_mini all"
     ],
-    "react-dotenv": {
-      "whitelist": ["API_URL"]
-    },
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "react-dotenv": {
+    "whitelist": ["API_URL"]
   }
 }

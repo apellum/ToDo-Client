@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <NavBar/> */}
+        <NavBar/>
         <Routes>
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/new-todo' element={<CreateToDo/>} />

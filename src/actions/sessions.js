@@ -1,4 +1,4 @@
-import { baseUrl } from "../GlobalVariables"
+import {baseUrl} from '../GlobalVariables'
 
 export const signup = (details, navigate) => {
     return async (dispatch) => {
@@ -12,7 +12,7 @@ export const signup = (details, navigate) => {
         },
         body: JSON.stringify(details)
       })
-      console.log(resp)
+      debugger
       const data = await resp.json();
       console.log(data)
       if (data.errors) {
