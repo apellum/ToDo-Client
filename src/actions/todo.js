@@ -1,6 +1,8 @@
+import { baseUrl } from "../GlobalVariables";
+
 export const addToDo = (details, token) => {
     return async (dispatch) => {
-        const resp = await fetch(addressHere, {
+        const resp = await fetch(baseUrl + '/todos', {
             method: "POST",
             headers: {
                 "Accept": "application/json",

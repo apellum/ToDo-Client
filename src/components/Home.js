@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = () => {
     return (
-        <div>
+        <div style={{padding: "100px"}}>
             <h1>To Do List</h1>
             <ol>
                 <li>Clean the House</li>
