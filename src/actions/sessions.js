@@ -25,7 +25,7 @@ export const signup = (details, navigate) => {
     }
   }
 
-export const login = (details, history) => {
+export const login = (state, navigate) => {
     return async dispatch => {
         dispatch({ type: "REQUESTING" });
         const resp = await fetch(baseUrl + '/login', {
@@ -34,7 +34,7 @@ export const login = (details, history) => {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(details)
+            body: JSON.stringify(state)
         })
         const data = await resp.json();
         if (data.errors) {
@@ -43,8 +43,9 @@ export const login = (details, history) => {
         } else {
             localStorage.setItem('jwt', data.jwt);
             dispatch({ type: "CLEAR_ERRRORS" })
+            console.log(data)
             dispatch({ type: "LOGIN", payload: data });
-            history.push('/')
+            navigate('/')
         }
         dispatch({ type: "DONE_REQUESTING" });
     }

@@ -26,7 +26,7 @@ const Login = () => {
         return () => {
             dispatch(clearErrors())
         }
-    }, [loggedIn, navigate])
+    }, [loggedIn, navigate, dispatch])
 
     const handleChange = e => {
         setState({
@@ -39,6 +39,7 @@ const Login = () => {
         e.preventDefault();
 
         dispatch(login(state, navigate))
+        console.log(state)
     }
     return (
         <div>
