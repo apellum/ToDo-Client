@@ -22,7 +22,7 @@ function App() {
   let year = d.getFullYear()
 
   return (
-    <div >
+    <div className="App">
       <Router>
         <NavBar/>
         <Routes>

@@ -39,7 +39,6 @@ const Login = () => {
         e.preventDefault();
 
         dispatch(login(state, navigate))
-        console.log(state)
     }
     return (
         <div>

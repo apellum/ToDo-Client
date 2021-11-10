@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { loadToDos } from '../actions/todo'
+import ListCard from './ListCard'
+import { TextField } from '@mui/material'
 
 const ListToDo = () => {
     const todos = useSelector(state => state.todo)
@@ -19,7 +21,7 @@ const ListToDo = () => {
 
     console.log(todos)
 
-    const todoArray = todos.map((todo)=>todo.task)
+    const todoArray = todos.map((todo)=> <ListCard todo={todo}/>)
     return (
         <div>
             {todoArray}

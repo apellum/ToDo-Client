@@ -24,7 +24,7 @@ const NavBar = () => {
                             <Button><NavLink to="/">Home</NavLink></Button>
                             <Button><NavLink to="/new-todo">New Todo</NavLink></Button>
                             <Button><NavLink to="/todos">Todos</NavLink></Button>
-                            <Button><NavLink to="/signup">Signup</NavLink></Button>
+                            {loggedIn ? null : <Button><NavLink to="/signup">Signup</NavLink></Button>}
                             {loggedIn ? <Button onClick={handleLogout}><NavLink to='/logout'>Logout</NavLink></Button> : <Button><NavLink to="/login">Login</NavLink></Button>}
                             
                     </Toolbar>

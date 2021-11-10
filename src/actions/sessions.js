@@ -38,12 +38,10 @@ export const login = (state, navigate) => {
         })
         const data = await resp.json();
         if (data.errors) {
-            console.log(data.errors)
             dispatch({ type: "ERRORS", payload: data.errors })
         } else {
             localStorage.setItem('jwt', data.jwt);
             dispatch({ type: "CLEAR_ERRRORS" })
-            console.log(data)
             dispatch({ type: "LOGIN", payload: data });
             navigate('/')
         }
@@ -66,7 +64,8 @@ export const getCurrentUser = () => {
             user: data,
             jwt: localStorage.getItem('jwt'),
         }
-        if (data.email) {
+        console.log(data.user)
+        if (data.user) {
             dispatch({ type: "LOGIN", payload})
         }
         dispatch({ type: "DONE_REQUESTING" })
