@@ -8,8 +8,8 @@ const CreateToDo = () => {
     const currentUser = useSelector(state => state.sessions.currentUser)
     const [form, setForm] = useState({
         task: "",
-        priority: "Choose Priority",
-        due_date: ""    })
+        priority: "Choose Priority"
+       })
 
     const handleChange = (e) => {
         setForm({
@@ -37,17 +37,7 @@ const CreateToDo = () => {
                     <MenuItem value="med">Med</MenuItem>
                     <MenuItem value="low">Low</MenuItem>
                 </Select>
-                <TextField
-                    value={form.due_date}
-                    onChange={handleChange}
-                    id="due_date"
-                    label="Due Date"
-                    name="due_date"
-                    type="date"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
+                {/*  */}
                 {/* May have to map the users to return the options */}
                 {/* <Select onChange={handleChange} name="assignee" label="Priority">
                     <MenuItem value={form.assignee}>Andrew</MenuItem>

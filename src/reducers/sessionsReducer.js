@@ -10,12 +10,12 @@ const sessionsReducer = (state=initialState, action) => {
             return {
                 currentUser: action.payload.user,
                 loggedIn: true,
-                // token: action.payload.jwt
+                token: action.payload.jwt
             }
         case "LOGOUT":
             return initialState;
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 

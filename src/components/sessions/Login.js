@@ -26,7 +26,7 @@ const Login = () => {
         return () => {
             dispatch(clearErrors())
         }
-    }, [loggedIn, navigate])
+    }, [loggedIn, navigate, dispatch])
 
     const handleChange = e => {
         setState({
@@ -38,7 +38,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // dispatch(login(state, history))
+        dispatch(login(state, navigate))
     }
     return (
         <div>

@@ -12,9 +12,7 @@ export const signup = (details, navigate) => {
         },
         body: JSON.stringify(details)
       })
-      debugger
       const data = await resp.json();
-      console.log(data)
       if (data.errors) {
         dispatch({ type: "ERRORS", payload: data.errors })
       } else {
@@ -27,7 +25,7 @@ export const signup = (details, navigate) => {
     }
   }
 
-export const login = (details, history) => {
+export const login = (state, navigate) => {
     return async dispatch => {
         dispatch({ type: "REQUESTING" });
         const resp = await fetch(baseUrl + '/login', {
@@ -36,17 +34,16 @@ export const login = (details, history) => {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(details)
+            body: JSON.stringify(state)
         })
         const data = await resp.json();
         if (data.errors) {
-            console.log(data.errors)
             dispatch({ type: "ERRORS", payload: data.errors })
         } else {
             localStorage.setItem('jwt', data.jwt);
             dispatch({ type: "CLEAR_ERRRORS" })
             dispatch({ type: "LOGIN", payload: data });
-            history.push('/')
+            navigate('/')
         }
         dispatch({ type: "DONE_REQUESTING" });
     }
@@ -67,7 +64,8 @@ export const getCurrentUser = () => {
             user: data,
             jwt: localStorage.getItem('jwt'),
         }
-        if (data.email) {
+        console.log(data.user)
+        if (data.user) {
             dispatch({ type: "LOGIN", payload})
         }
         dispatch({ type: "DONE_REQUESTING" })
