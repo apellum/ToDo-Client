@@ -47,7 +47,7 @@ const Login = () => {
                 <Paper elevation={10} style={paperStyle}>
                         <Grid align='center'>
                             <Avatar style={avatarStyle}><LoginIcon/></Avatar>
-                            <h2>Sign In</h2>
+                            <h2>Login</h2>
                         </Grid>
                             <Box component='form' onSubmit={handleSubmit} sx={{
                                 marginTop: 8,

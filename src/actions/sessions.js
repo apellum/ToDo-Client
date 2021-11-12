@@ -61,12 +61,11 @@ export const getCurrentUser = () => {
             }
         })
         const data = await resp.json();
-        console.log(resp)
+        console.log(data)
         const payload = {
             user: data.user,
             jwt: localStorage.getItem('jwt'),
         }
-        console.log(payload)
         if (data.user) {
             dispatch({ type: "LOGIN", payload})
         }

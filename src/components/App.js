@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from '../actions/sessions';
 import "../App.css"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -13,9 +13,13 @@ import ListToDo from './ListToDo';
 function App() {
 
   const dispatch = useDispatch();
+  const requesting = useSelector(state => state.requesting)
 
   useEffect(() => {
-    dispatch(getCurrentUser())
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      dispatch(getCurrentUser(token))
+    }
   }, [dispatch])
 
   const d = new Date();
