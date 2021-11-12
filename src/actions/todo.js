@@ -11,9 +11,7 @@ export const addToDo = (details, token) => {
             },
             body: JSON.stringify(details)
         })
-        console.log(resp)
         const data = await resp.json();
-        console.log(data)
         dispatch({type: "ADD_TODO", payload: data})
     }
 }
@@ -27,7 +25,6 @@ export const loadToDos = () => {
           "Content-Type": "application/json",
         }
       })
-      console.log(resp)
       const data = await resp.json();
       dispatch({ type: "SET_TODOS", payload: data})
       dispatch({ type: "DONE_REQUESTING" })

@@ -12,7 +12,7 @@ import ListToDo from './ListToDo';
 
 function App() {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCurrentUser())
