@@ -25,7 +25,7 @@ const NavBar = () => {
                             {loggedIn ? <Button><NavLink to="/new-todo">New Todo</NavLink></Button> : null}
                             <Button><NavLink to="/todos">Todos</NavLink></Button>
                             {loggedIn ? null : <Button><NavLink to="/signup">Signup</NavLink></Button>}
-                            {loggedIn ? <Button onClick={handleLogout}><NavLink to='/logout'>Logout</NavLink></Button> : <Button><NavLink to="/login">Login</NavLink></Button>}
+                            {loggedIn ? <Button position='right' onClick={handleLogout}><NavLink to='/logout'>Logout</NavLink></Button> : <Button><NavLink to="/login">Login</NavLink></Button>}
                             
                     </Toolbar>
                 </AppBar>
