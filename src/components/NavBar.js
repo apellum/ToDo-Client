@@ -18,7 +18,7 @@ const NavBar = () => {
     return (
         <div>
             <Box>
-                <AppBar position='static'>
+                <AppBar position='sticky'>
                     <Toolbar >
                         {currentUser ? <Typography>{currentUser.first_name}</Typography> : <Typography>Family ToDo App</Typography>}
                             <Button><NavLink to="/">Home</NavLink></Button>

@@ -47,6 +47,11 @@
     ]
   },
   "react-dotenv": {
-    "whitelist": ["API_URL"]
+    "whitelist": [
+      "API_URL"
+    ]
+  },
+  "devDependencies": {
+    "react-test-renderer": "^17.0.2"
   }
 }

@@ -19,7 +19,6 @@ const ListToDo = () => {
         }
     }, [loggedIn, dispatch, navigate])
 
-    console.log(todos)
 
     const todoArray = todos.map((todo)=> <ListCard todo={todo}/>)
     return (

@@ -66,6 +66,8 @@ const Login = () => {
                                     value={state.password}
                                     onChange={handleChange}
                                     name="password"
+                                    htmlFor="password"
+                                    testid="password-input"
                                     label="Password"
                                     type="password"
                                     id="password"

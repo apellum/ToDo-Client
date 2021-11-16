@@ -4,6 +4,7 @@ import { getCurrentUser } from '../actions/sessions';
 import "../App.css"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './NavBar';
+import Errors from './Errors'
 import Home from './Home';
 import CreateToDo from './CreateToDo';
 import Signup from './sessions/Signup';
@@ -29,6 +30,7 @@ function App() {
     <div className="App">
       <Router>
         <NavBar/>
+        <Errors/>
         <Routes>
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/new-todo' element={<CreateToDo/>} />
