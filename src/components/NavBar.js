@@ -20,12 +20,12 @@ const NavBar = () => {
             <Box>
                 <AppBar position='sticky'>
                     <Toolbar >
-                        {currentUser ? <Typography>{currentUser.first_name}</Typography> : <Typography>Family ToDo App</Typography>}
+                        {currentUser ? <Typography flex='1' align='left'>{currentUser.first_name}</Typography> : <Typography flex='1'>Family ToDo App</Typography>}
                             <Button><NavLink to="/">Home</NavLink></Button>
                             {loggedIn ? <Button><NavLink to="/new-todo">New Todo</NavLink></Button> : null}
                             <Button><NavLink to="/todos">Todos</NavLink></Button>
                             {loggedIn ? null : <Button><NavLink to="/signup">Signup</NavLink></Button>}
-                            {loggedIn ? <Button position='right' onClick={handleLogout}><NavLink to='/logout'>Logout</NavLink></Button> : <Button><NavLink to="/login">Login</NavLink></Button>}
+                            {loggedIn ? <Button onClick={handleLogout}><NavLink to='/logout'>Logout</NavLink></Button> : <Button><NavLink to="/login">Login</NavLink></Button>}
                             
                     </Toolbar>
                 </AppBar>
