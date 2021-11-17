@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { addToDo } from '../actions/todo';
 import { TextField, Select, MenuItem, Button } from '@mui/material';
 
 const CreateToDo = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const currentUser = useSelector(state => state.sessions.currentUser)
     const [form, setForm] = useState({
         task: "",
@@ -21,6 +23,7 @@ const CreateToDo = () => {
         e.preventDefault();
 
         dispatch(addToDo(form, currentUser))
+        navigate('/todos')
     }
     return (
         <div style={{ padding: "200px" }}>
@@ -33,9 +36,9 @@ const CreateToDo = () => {
                     label="Priority"
                     onChange={handleChange}>
                     <MenuItem value="Choose Priority">Choose Priority</MenuItem>
-                    <MenuItem value="high">High</MenuItem>
-                    <MenuItem value="med">Med</MenuItem>
-                    <MenuItem value="low">Low</MenuItem>
+                    <MenuItem value="1">High</MenuItem>
+                    <MenuItem value="2">Med</MenuItem>
+                    <MenuItem value="3">Low</MenuItem>
                 </Select>
                 {/*  */}
                 {/* May have to map the users to return the options */}

@@ -11,21 +11,17 @@ const ListToDo = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
-        if(loggedIn){
+        if (loggedIn) {
             dispatch(loadToDos())
         } else {
             navigate('/login')
         }
     }, [loggedIn, dispatch, navigate])
 
+    const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
 
-    const todoArray = todos.map((todo)=> <ListCard todo={todo}/>)
-    const priorityLevels = {high, medium, low}
+    const todoArray = sortedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} todo={todo} />)
 
-    // assign keys to priority levels {high key=0, low=2} then sort based off of the keys
-    const sortedTodoArray = todoArray.sort((x,y)=> priorityLevels.indexOf(x.priority) - priorityLevels.indexOf(y.priority));
-    console.log(sortedTodoArray)
-    console.log(todoArray)
     return (
         <div>
             {todoArray}
