@@ -1,7 +1,11 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { loadToDos } from '../actions/todo'
+import { baseUrl } from '../GlobalVariables'
 import { Grid, Card, Paper, CardContent, Button } from '@mui/material'
 
-const ListCard = ({ todo, priority }) => {
+const ListCard = ({ todo, priority, key }) => {
+    const dispatch = useDispatch()
 
     const priorityColor = (priority) => {
         if (priority === 1) {
@@ -27,8 +31,22 @@ const ListCard = ({ todo, priority }) => {
         }
     }
 
-    const handleClick = () => {
-
+    const handleClick = async () => {
+        const headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+        const body = {
+            completed: !todo.completed
+        }
+        const options = {
+            method: "PATCH",
+            headers,
+            body: JSON.stringify(body)
+        }
+        const response = await fetch(baseUrl + `/todos/${todo.id}`, options)
+        const data = await response.json()
+        dispatch(loadToDos(data))
     }
 
     return (
@@ -36,7 +54,7 @@ const ListCard = ({ todo, priority }) => {
             <Grid>
                 <Paper>
                     <Card item>
-                        <CardContent style={{ backgroundColor: priorityColor(priority) }}>Task: {todo.task} | Priority: {priorityLabel(priority)} | Completed: {todo.completed} <Button variant="contained" onClick={handleClick}>Mark as Complete</Button></CardContent>
+                        <CardContent key={key} style={{ backgroundColor: priorityColor(priority) }}>Task: {todo.task} | Priority: {priorityLabel(priority)} | Completed: {todo.completed} {!todo.completed ? <Button variant="contained" onClick={handleClick}>Mark as Complete</Button> : null}</CardContent>
                         {/* <CardContent>Last Name: {customer.last_name}</CardContent>
                         <CardContent>Date Of Birth: {customer.date_of_birth}</CardContent>
                         <CardContent>Address: {customer.address}</CardContent>

@@ -37,10 +37,16 @@ const ListToDo = () => {
     // }
     
     // const todosFilter = sortedTodos.filter(filterByCompleted)
-
-
+    
+    
     const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
+    // const filteredTodos = sortedTodos.filter((todo)=> {
+    //     if (){
+    //         return 
+    //     }
+    // }
     const todoArray = sortedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} todo={todo} />)
+    // debugger
 
     return (
         <div>
@@ -50,7 +56,7 @@ const ListToDo = () => {
                     name="completed"
                     value={todos.completed}
                     label="Completed"
-                onChange={handleChange}>
+                >
                     <MenuItem value='false'>Not Completed</MenuItem>
                     <MenuItem value="true">Completed</MenuItem>
                     <MenuItem value="">All</MenuItem>
