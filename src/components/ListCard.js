@@ -62,7 +62,7 @@ return (
         <Grid>
             <Paper>
                 <Card item>
-                    <CardContent key={key} style={{ backgroundColor: priorityColor(priority), color: completedText(completed) }}>Task: {todo.task} | Priority: {priorityLabel(priority)} {!todo.completed ? <Button variant="contained" onClick={handleClick}>Mark as Complete</Button> : null}</CardContent>
+                    <CardContent key={key} style={{ backgroundColor: priorityColor(priority), color: completedText(completed) }}>Task: {todo.task} | Priority: {priorityLabel(priority)} {!todo.completed ? <Button variant="contained" sx={{padding:'4px, 4px, 4px, 4px', float:"right", }} onClick={handleClick}>Complete</Button> : null}</CardContent>
                     {/* <CardContent>Last Name: {customer.last_name}</CardContent>
                         <CardContent>Date Of Birth: {customer.date_of_birth}</CardContent>
                         <CardContent>Address: {customer.address}</CardContent>
