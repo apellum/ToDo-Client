@@ -45,8 +45,9 @@ const ListToDo = () => {
     //         return 
     //     }
     // }
-    const todoArray = sortedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} todo={todo} />)
+    const todoArray = sortedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo} />)
     // debugger
+    console.log(todos)
 
     return (
         <div>
