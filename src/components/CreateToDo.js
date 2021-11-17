@@ -10,7 +10,8 @@ const CreateToDo = () => {
     const currentUser = useSelector(state => state.sessions.currentUser)
     const [form, setForm] = useState({
         task: "",
-        priority: "Choose Priority"
+        priority: "Choose Priority",
+        completed: false
        })
 
     const handleChange = (e) => {
