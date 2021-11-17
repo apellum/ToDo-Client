@@ -8,7 +8,8 @@ const ListCard = ({todo}) => {
             <Grid>
                 <Paper>
                     <Card item>
-                        <CardContent>Task: {todo.task}</CardContent>
+                        <CardContent>Task: {todo.task} | Priority: {todo.priority}</CardContent>
+                        {/* <CardContent>Priority: {todo.priority}</CardContent> */}
                         {/* <CardContent>Last Name: {customer.last_name}</CardContent>
                         <CardContent>Date Of Birth: {customer.date_of_birth}</CardContent>
                         <CardContent>Address: {customer.address}</CardContent>

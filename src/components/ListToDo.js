@@ -20,6 +20,12 @@ const ListToDo = () => {
 
 
     const todoArray = todos.map((todo)=> <ListCard todo={todo}/>)
+    const priorityLevels = {high, medium, low}
+
+    // assign keys to priority levels {high key=0, low=2} then sort based off of the keys
+    const sortedTodoArray = todoArray.sort((x,y)=> priorityLevels.indexOf(x.priority) - priorityLevels.indexOf(y.priority));
+    console.log(sortedTodoArray)
+    console.log(todoArray)
     return (
         <div>
             {todoArray}
