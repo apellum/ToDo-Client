@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { loadToDos } from '../actions/todo'
 import ListCard from './ListCard'
-import { Select, MenuItem, InputLabel } from '@mui/material'
+import { Select, MenuItem, InputLabel, Paper } from '@mui/material'
 
 const ListToDo = () => {
+    const listStyle = { padding: 20, height: '70vh', width: 650, margin: '20px auto', borderRadius: 25 , overflowY: 'scroll'}
     const todos = useSelector(state => state.todo)
     const loggedIn = useSelector(state => state.sessions.loggedIn)
     const [todoFilter, setTodoFilter] = useState("")
@@ -62,6 +63,9 @@ const ListToDo = () => {
                     <MenuItem value="true">Completed</MenuItem>
                     <MenuItem value="">All</MenuItem>
                 </Select>
+                <Paper elevation={10} style={listStyle}>
+                    {todoArray}
+                </Paper>
             {todoArray}
         </div>
     )

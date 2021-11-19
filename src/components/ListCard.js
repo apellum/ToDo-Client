@@ -9,13 +9,13 @@ const ListCard = ({ todo, priority, key, completed}) => {
 
     const priorityColor = (priority) => {
         if (completed === true) {
-            return "blue"
+            return "#1976d2"
     }  else if (priority === 1) {
-        return "red"
+        return "#D72727"
     } else if (priority === 2) {
-        return "orange"
+        return "#E07F1E"
     } else if (priority === 3) {
-        return "yellow"
+        return "#E0E01E"
     } else {
         return null
     }
@@ -60,9 +60,9 @@ const handleClick = async () => {
 return (
     <div>
         <Grid>
-            <Paper>
-                <Card item>
-                    <CardContent key={key} style={{ backgroundColor: priorityColor(priority), color: completedText(completed) }}>Task: {todo.task} | Priority: {priorityLabel(priority)} {!todo.completed ? <Button variant="contained" sx={{padding:'4px, 4px, 4px, 4px', float:"right", }} onClick={handleClick}>Complete</Button> : null}</CardContent>
+            <Paper sx={{borderRadius: 25}}>
+                <Card item >
+                    <CardContent key={key} style={{ backgroundColor: priorityColor(priority), color: completedText(completed), borderRadius: 15 }}>Task: {todo.task} | Priority: {priorityLabel(priority)} {!todo.completed ? <Button variant="contained" sx={{padding:'4px, 4px, 4px, 4px', float:"right", }} onClick={handleClick}>Complete</Button> : null}</CardContent>
                     {/* <CardContent>Last Name: {customer.last_name}</CardContent>
                         <CardContent>Date Of Birth: {customer.date_of_birth}</CardContent>
                         <CardContent>Address: {customer.address}</CardContent>
@@ -74,6 +74,7 @@ return (
                     {/* <Button onClick={handleClick}>Mark as Complete</Button> */}
                 </Card>
             </Paper>
+            <br/>
         </Grid>
     </div>
 )
