@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { baseUrl } from '../GlobalVariables'
 import { loadToDos } from '../actions/todo'
 import ListCard from './ListCard'
 import { Select, MenuItem, FormControl, Paper } from '@mui/material'
@@ -8,9 +9,9 @@ import { Select, MenuItem, FormControl, Paper } from '@mui/material'
 const ListToDo = () => {
     const listStyle = { padding: 20, height: '70vh', width: 650, margin: '20px auto', borderRadius: 25, overflowY: 'scroll' }
     const todos = useSelector(state => state.todo)
+    console.log(todos)
     const loggedIn = useSelector(state => state.sessions.loggedIn)
     const [filteredItems, setFilteredItems] = useState([])
-    const [value, setValue] = useState("false")
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -22,34 +23,16 @@ const ListToDo = () => {
         }
     }, [loggedIn, dispatch, navigate])
 
-    // Working on filter for Completed - None of this is working currently
-    // const handleChange = (e) => {
-    //     setTodoFilter(e.target.value)
+    // const removeTodo = (id) => {
+    //     todos.filter(todo=>todo.id !== id)
     // }
 
-
-    // const filteredTodos = sortedTodos.filter((todo) => todo.completed === {todoFilter})
-
-    // function filterByCompleted(todo) {
-    //     if (todo.completed === true) {
-    //         return true
-    //     }
-    //     invalidEntries++
-    //     return false;
-    // }
-
-    // const todosFilter = sortedTodos.filter(filterByCompleted)
-
-    // const handleFilter = () => {
-    //     let todoFilter
-    //     if (value === true) {
-    //         todoFilter = sortedTodos.filter((todo)=> todo.completed)
-    //     } else if (value === false) {
-    //         todoFilter = sortedTodos.filter((todo)=> !todo.completed)
-    //     } else {
-    //         todoFilter = sortedTodos
-    //     }
-    //     console.log(e.value)
+    // const handleDelete = async (id) => {
+    //     await fetch(baseUrl + `/todos/${id}`, {
+    //         method: "DELETE"
+    //     })
+    //     removeTodo(id)
+    //     dispatch(loadToDos())
     // }
 
     const handleChange = e => {
@@ -64,11 +47,13 @@ const ListToDo = () => {
         }
         setFilteredItems(todoFilter)
     }
+
     const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
     // const filteredTodos = sortedTodos.filter((todo)=> !todo.completed)
     console.log(filteredItems)
-    const todoArray = filteredItems.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo} />)
+    const todoArray = filteredItems.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
     // debugger
+   
 
     return (
         <div>
