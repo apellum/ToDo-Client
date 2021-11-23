@@ -1,11 +1,20 @@
-const initialState = []
+const initialState = {
+    todos: [],
+    sortedTodos: [],
+    completedTodos: [],
+    notCompletedTodos: []
+}
 
 const todoReducer = (state=initialState, action) => {
     switch(action.type) {
         case "ADD_TODO":
-            return [...state, action.payload]
+            return {...state, todos: action.payload};
         case "SET_TODOS":
-            return action.payload;
+            return {...state, sortedTodos: action.payload};
+        case "COMPLETED_TODOS":
+            return {...state, completedTodos: action.payload};
+        case "NOT_COMPLETED_TODOS":
+            return {...state, notCompletedTodos: action.payload};
         default:
             return state
     }

@@ -45,7 +45,7 @@ const Login = () => {
     }
 
     if (requesting) {
-        return <Loader type="Circles" sx={{ position: 'absolute', left: '50%', top: '50%' }} color="#00BFFF" height={80} width={80} />
+        return <Loader type="Circles" sx={{ position: 'absolute', left: '50%', top: '50%' }} color="#00BFFF" height={500} width={80} />
     }
 
     return (
@@ -75,7 +75,7 @@ const Login = () => {
                                 onChange={handleChange}
                                 name="password"
                                 htmlFor="password"
-                                testid="password-input"
+                                data-testid="password-input"
                                 label="Password"
                                 type="password"
                                 id="password"

@@ -19,8 +19,8 @@ import Wrapper from './Wrapper';
 // });
 
 test('has password component', () => {
-  render(<Wrapper/>);
-  const password = screen.getByTestId('password-input', {name: 'password'});
+  render(<Provider><Login/></Provider>);
+  const password = screen.findByTestId('password-input', {name: 'password'});
   expect(password).toBeInTheDocument();
 });
 

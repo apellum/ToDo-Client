@@ -76,9 +76,9 @@ const handleClick = async () => {
 
 return (
     <div>
-        <Grid>
+        <Grid sx={{borderRadius: 25}}>
             <Paper sx={{borderRadius: 25}}>
-                <Card item >
+                <Card item sx={{borderRadius: 25}}>
                     <CardContent key={key} style={{ backgroundColor: priorityColor(priority), color: completedText(completed), borderRadius: 15 }}>Task: {todo.task} | Priority: {priorityLabel(priority)} {!todo.completed ? <Button variant="contained" sx={{padding:'4px, 4px, 4px, 4px', float:"right", }} onClick={handleClick}>Complete</Button> : null} <DeleteForeverIcon onClick={handleDelete}/></CardContent>
                 </Card>
             </Paper>

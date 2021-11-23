@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { addToDo } from '../actions/todo';
+import { addToDo, loadToDos } from '../actions/todo';
 import { TextField, Select, MenuItem, Button } from '@mui/material';
 
 const CreateToDo = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const currentUser = useSelector(state => state.sessions.currentUser)
+    // const todos = useSelector(state => state.todo)
+    // console.log(todos)
     const [form, setForm] = useState({
         task: "",
         priority: "Choose Priority",
         completed: false
        })
+
+    // useEffect(()=> {
+    //     dispatch(loadToDos)
+    // }, [])
+
 
     const handleChange = (e) => {
         setForm({

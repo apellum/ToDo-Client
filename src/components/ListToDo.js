@@ -8,10 +8,13 @@ import { Select, MenuItem, FormControl, Paper } from '@mui/material'
 
 const ListToDo = () => {
     const listStyle = { padding: 20, height: '70vh', width: 650, margin: '20px auto', borderRadius: 25, overflowY: 'scroll' }
-    const todos = useSelector(state => state.todo)
-    console.log(todos)
+    const todos = useSelector(state => state.todo.todos)
     const loggedIn = useSelector(state => state.sessions.loggedIn)
-    const [filteredItems, setFilteredItems] = useState([])
+    const sortedTodos = useSelector(state => state.todo.sortedTodos)
+    const completedTodos = useSelector(state => state.todo.completedTodos)
+    const notCompletedTodos = useSelector(state => state.todo.notCompletedTodos)
+    const [filterValue, setFilterValue] = useState("false")
+    // const [filteredItems, setFilteredItems] = useState(sortedTodos.filter((todo) => !todo.completed))
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -21,7 +24,7 @@ const ListToDo = () => {
         } else {
             navigate('/login')
         }
-    }, [loggedIn, dispatch, navigate])
+    }, [loggedIn, dispatch, navigate, filterValue, todos])
 
     // const removeTodo = (id) => {
     //     todos.filter(todo=>todo.id !== id)
@@ -36,23 +39,34 @@ const ListToDo = () => {
     // }
 
     const handleChange = e => {
-        let todoFilter
-        console.log(e.target.value)
-        if (e.target.value === 'true') {
-            todoFilter = sortedTodos.filter((todo) => todo.completed)
-        } else if (e.target.value === 'false') {
-            todoFilter = sortedTodos.filter((todo) => !todo.completed)
-        } else {
-            todoFilter = sortedTodos
-        }
-        setFilteredItems(todoFilter)
+        setFilterValue(e.target.value)
     }
 
-    const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
+    // const handleChange = e => {
+    //     let todoFilter
+    //     console.log("e.value", e.target.value)
+    //     setFilterValue(e.target.value)
+    //     if (e.target.value === 'true') {
+    //         todoFilter = todos.filter((todo) => todo.completed)
+    //         console.log("filter value", filterValue)
+    //     } else if (e.target.value === 'false') {
+    //         todoFilter = todos.filter((todo) => !todo.completed)
+    //     } else {
+    //         todoFilter = sortedTodos
+    //     }
+    //     setFilteredItems(todoFilter)
+    // }
+
     // const filteredTodos = sortedTodos.filter((todo)=> !todo.completed)
-    console.log(filteredItems)
-    const todoArray = filteredItems.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
-    // debugger
+    const sortedByValues = (filterValue) => {
+        if (filterValue === 'true'){
+            return completedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
+        } else if (filterValue === 'false'){
+            return notCompletedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
+        } else {
+            return sortedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
+        }
+    }
    
 
     return (
@@ -61,19 +75,19 @@ const ListToDo = () => {
                 <Select
                     id="completed"
                     name="completed"
-                    value={todos.completed}
+                    value={filterValue}
                     autoWidth
                     displayEmpty
                     label="Completed"
                     onChange={handleChange}
                 >
-                    <MenuItem value='false' selected>Not Completed</MenuItem>
+                    <MenuItem value='false' >Not Completed</MenuItem>
                     <MenuItem value="true">Completed</MenuItem>
                     <MenuItem value="">All</MenuItem>
                 </Select>
             </FormControl>
             <Paper elevation={10} style={listStyle}>
-                {todoArray}
+                {sortedByValues(filterValue)}
             </Paper>
         </div>
     )
