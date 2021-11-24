@@ -23,18 +23,6 @@ const ListToDo = () => {
         }
     }, [loggedIn, dispatch, navigate, filterValue, todos])
 
-    // const removeTodo = (id) => {
-    //     todos.filter(todo=>todo.id !== id)
-    // }
-
-    // const handleDelete = async (id) => {
-    //     await fetch(baseUrl + `/todos/${id}`, {
-    //         method: "DELETE"
-    //     })
-    //     removeTodo(id)
-    //     dispatch(loadToDos())
-    // }
-
     const handleChange = e => {
         setFilterValue(e.target.value)
     }

@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const ListCard = ({ todo, priority, key, completed}) => {
     const dispatch = useDispatch()
-    const todos = useSelector(state=>state.todo)
+    const todos = useSelector(state=>state.todo.todos)
 
     const priorityColor = (priority) => {
         if (completed === true) {
@@ -72,7 +72,6 @@ const handleClick = async () => {
     const data = await response.json()
     dispatch(loadToDos(data))
 }
-
 
 return (
     <div>
