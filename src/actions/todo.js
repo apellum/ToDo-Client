@@ -27,11 +27,7 @@ export const loadToDos = () => {
     })
     const data = await resp.json();
     const sortedData = data.sort((a, b) => a.priority - b.priority);
-    const completedTodos = sortedData.filter((todo) => todo.completed)
-    const notCompleted = sortedData.filter((todo) => !todo.completed)
     dispatch({ type: "SET_TODOS", payload: sortedData })
-    dispatch({ type: "COMPLETED_TODOS", payload: completedTodos})
-    dispatch({ type: "NOT_COMPLETED_TODOS", payload: notCompleted})
     dispatch({ type: "DONE_REQUESTING" })
   }
 }

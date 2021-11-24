@@ -11,10 +11,7 @@ const ListToDo = () => {
     const todos = useSelector(state => state.todo.todos)
     const loggedIn = useSelector(state => state.sessions.loggedIn)
     const sortedTodos = useSelector(state => state.todo.sortedTodos)
-    const completedTodos = useSelector(state => state.todo.completedTodos)
-    const notCompletedTodos = useSelector(state => state.todo.notCompletedTodos)
     const [filterValue, setFilterValue] = useState("false")
-    // const [filteredItems, setFilteredItems] = useState(sortedTodos.filter((todo) => !todo.completed))
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -42,32 +39,15 @@ const ListToDo = () => {
         setFilterValue(e.target.value)
     }
 
-    // const handleChange = e => {
-    //     let todoFilter
-    //     console.log("e.value", e.target.value)
-    //     setFilterValue(e.target.value)
-    //     if (e.target.value === 'true') {
-    //         todoFilter = todos.filter((todo) => todo.completed)
-    //         console.log("filter value", filterValue)
-    //     } else if (e.target.value === 'false') {
-    //         todoFilter = todos.filter((todo) => !todo.completed)
-    //     } else {
-    //         todoFilter = sortedTodos
-    //     }
-    //     setFilteredItems(todoFilter)
-    // }
-
-    // const filteredTodos = sortedTodos.filter((todo)=> !todo.completed)
     const sortedByValues = (filterValue) => {
         if (filterValue === 'true'){
-            return completedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
+            return sortedTodos.filter((todo) => todo.completed).map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
         } else if (filterValue === 'false'){
-            return notCompletedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
+            return sortedTodos.filter((todo) => !todo.completed).map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
         } else {
             return sortedTodos.map((todo) => <ListCard key={todo.id} priority={todo.priority} completed={todo.completed} todo={todo}/>)
         }
     }
-   
 
     return (
         <div>

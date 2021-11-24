@@ -1,8 +1,6 @@
 const initialState = {
     todos: [],
-    sortedTodos: [],
-    completedTodos: [],
-    notCompletedTodos: []
+    sortedTodos: []
 }
 
 const todoReducer = (state=initialState, action) => {
@@ -11,10 +9,6 @@ const todoReducer = (state=initialState, action) => {
             return {...state, todos: action.payload};
         case "SET_TODOS":
             return {...state, sortedTodos: action.payload};
-        case "COMPLETED_TODOS":
-            return {...state, completedTodos: action.payload};
-        case "NOT_COMPLETED_TODOS":
-            return {...state, notCompletedTodos: action.payload};
         default:
             return state
     }
